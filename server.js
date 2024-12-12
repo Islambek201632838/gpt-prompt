@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const fetch = require('node-fetch');
 
@@ -6,8 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
-const OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
-const OPENAI_API_KEY = "sk-None-fDvZ5G3RJOt0Scml1XDTT3BlbkFJV2DebZ2h5ChqooDEhoDt";
+const OPENAI_API_URL = process.env.OPENAI_API_URL;
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 app.post('/api/gpt', async (req, res) => {
   const { instruction, question } = req.body;
